@@ -1,0 +1,35 @@
+{
+  "name": "swdv-620-web-apps-final-project",
+  "version": "1.0.0",
+  "description": "Java Spring Boot Code Chalenge To NodeJS Migration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antillgrp/swdv-620-web-apps-final-project.git"
+  },
+  "keywords": [
+    "Java",
+    "Spring",
+    "Boot",
+    "JPA",
+    "Hibernate",
+    "NodeJS",
+    "ReactJS",
+    "ReduxJS",
+    "Docker",
+    "MySQL",
+    "Sequelize",
+    "ORM",
+    "Rest",
+    "API"
+  ],
+  "author": "Gerson Ramirez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antillgrp/swdv-620-web-apps-final-project/issues"
+  },
+  "homepage": "https://github.com/antillgrp/swdv-620-web-apps-final-project#readme"
+}

@@ -1,0 +1,30 @@
+{
+  "name": "crud-restapis-express-sequelize-mysql",
+  "version": "1.0.0",
+  "description": "crud-restapis-express-sequelize-mysql",
+  "main": "",
+  "scripts": {
+    "start": "node src/CustomersApp.js",
+    "dev": "nodemon --watch src src/CustomersApp.js"
+  },
+  "keywords": [
+    "CRUD",
+    "REST",
+    "API",
+    "express",
+    "sequelize",
+    "mysql"
+  ],
+  "author": "Gerson Ramirez",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.1",
+    "http-status-codes": "^1.4.0",
+    "mysql2": "2.1.0",
+    "sequelize": "5.21.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "sequelize-auto": "^0.4.29"
+  }
+}
