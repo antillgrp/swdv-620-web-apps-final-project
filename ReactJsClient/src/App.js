@@ -37,6 +37,7 @@ DataProviderManager.loadDataProvider({
 const App = () => (
     <Admin
         title="People10 code challenge"
+        
         dataProvider={DataProviderManager.dataProvider}
         dashboard={Dashboard}
     >

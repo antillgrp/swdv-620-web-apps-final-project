@@ -5,11 +5,13 @@ const bodyParser = require("body-parser");
 const customersController = require("./CustomersController");
 
 const app = express();
+
 app.use(bodyParser.json());
 
 customersController(app);
 
-let server = app.listen((app.PORT = 4000), () => {
-  console.log(`Customer Rest API listening on port:`, app.PORT);
-  //app.PORT = `${server.address().port}`.trim();
-});
+app.listen(
+  (app.PORT = 4002),
+  () => console.log(`Customer Rest API listening on port:`, app.PORT)
+  // https://www.kevinsimper.dk/posts/how-to-get-the-port-of-express.js-app-devtip
+);

@@ -1,5 +1,5 @@
-/home/vsonline/workspace/people10challenge-alpha/code-challenge/challenge-client-server-app/server/src/main/java/com/challenge/customers/CustomersController.java
-/home/vsonline/workspace/people10challenge-alpha/code-challenge/challenge-client-server-app/server/src/main/java/com/challenge/customers/CustomersApplication.java
-/home/vsonline/workspace/people10challenge-alpha/code-challenge/challenge-client-server-app/server/src/main/java/com/challenge/customers/CustCmdRunner.java
-/home/vsonline/workspace/people10challenge-alpha/code-challenge/challenge-client-server-app/server/src/main/java/com/challenge/customers/CustomerRepository.java
-/home/vsonline/workspace/people10challenge-alpha/code-challenge/challenge-client-server-app/server/src/main/java/com/challenge/customers/Customers.java
+/home/toor/Development/swdv-620-web-apps-final-project/JavaServer/src/main/java/com/challenge/customers/CustomersApplication.java
+/home/toor/Development/swdv-620-web-apps-final-project/JavaServer/src/main/java/com/challenge/customers/Customer.java
+/home/toor/Development/swdv-620-web-apps-final-project/JavaServer/src/main/java/com/challenge/customers/CustomerRepository.java
+/home/toor/Development/swdv-620-web-apps-final-project/JavaServer/src/main/java/com/challenge/customers/CustCmdRunner.java
+/home/toor/Development/swdv-620-web-apps-final-project/JavaServer/src/main/java/com/challenge/customers/CustomersController.java

@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustCmdRunner implements CommandLineRunner {
 
-    private final CustomerRepository repository;
+    //private final CustomerRepository repository;
 
     public CustCmdRunner(CustomerRepository repository) {
-        this.repository = repository;
+        //this.repository = repository;
     }
 
     @Override

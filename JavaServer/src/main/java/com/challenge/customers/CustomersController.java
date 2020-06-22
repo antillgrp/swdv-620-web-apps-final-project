@@ -19,21 +19,26 @@ public class CustomersController {
     /*****GETALL****/
     //curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X GET "http://localhost:8080/customers"
     @GetMapping(path = "customers", produces = "application/JSON")
-	public ResponseEntity<List<Customers>> getAll() {
-        return  new ResponseEntity<>(repository.findAll(),HttpStatus.OK);
+    public ResponseEntity<List<Customer>> getAll() {
+        
+        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+        
     }
 
     /*****GETONEBYID******/
     //curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X GET "http://localhost:8080/customers/68"
     @GetMapping(path = "customers/{id}", produces = "application/JSON")
-	public ResponseEntity<List<Customers>> getOneByID(@PathVariable("id") Long id) {
-        List<Customers> resL = new LinkedList<Customers>();
-        Optional<Customers> opt= repository.findById(id);
+    public ResponseEntity<List<Customer>> getOneByID(@PathVariable("id") Long id) {
+        
+        List<Customer> resL = new LinkedList<>();
+        Optional<Customer> opt= repository.findById(id);
         if(opt.isPresent()){
             resL.add(opt.get());
             return new ResponseEntity<>(resL,HttpStatus.OK);
         }
-        else return new ResponseEntity<>(resL,HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<>(resL, HttpStatus.NOT_FOUND);
+        
     }
 
     /******CREATE********/
@@ -43,11 +48,13 @@ st_name":"Hamilton","ip":"135.75.95.238","latitude":-27.634171,"longitude":-52.2
 /customers"
     */
     @PostMapping(path = "customers", produces = "application/JSON")
-    public ResponseEntity<Long> create(@RequestBody Customers cust) {
+    public ResponseEntity<Long> create(@RequestBody Customer cust) {
+
         return new ResponseEntity<>(
-            (repository.save(new Customers(cust,true,true))).getId(),
+            (repository.save(new Customer(cust,true,true))).getId(),
             HttpStatus.CREATED
         );
+
     }
 
     /******UPDATE*********/
@@ -57,9 +64,9 @@ t_name":"Hamiltosssssn","ip":"135.75.95.238","latitude":-27.634171,"longitude":-
 080/customers"
     */
     @PutMapping(path = "customers", produces = "application/JSON")
-    public ResponseEntity<Long> update(@RequestBody Customers cust) {
+    public ResponseEntity<Long> update(@RequestBody Customer cust) {
 
-        Customers custRes = new Customers(cust,cust.getId(),false,true);
+        Customer custRes = new Customer(cust,cust.getId(),false,true);
         if(repository.existsById(cust.getId())){
 
             custRes = repository.save(custRes);
@@ -68,13 +75,16 @@ t_name":"Hamiltosssssn","ip":"135.75.95.238","latitude":-27.634171,"longitude":-
                 HttpStatus.CREATED
             );
         }
-        else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        
     }
 
     /*******DELETE***********/
     //curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X DELETE "http://localhost:8080/customers/68"
     @DeleteMapping(path = "customers/{id}", produces = "application/JSON")
     public ResponseEntity<Long> delete(@PathVariable("id") Long id) {
+
         if(repository.existsById(id)){
 
             repository.deleteById(id);
@@ -84,7 +94,9 @@ t_name":"Hamiltosssssn","ip":"135.75.95.238","latitude":-27.634171,"longitude":-
                 HttpStatus.OK
             );
         }
-        else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        
     }
 
 }
