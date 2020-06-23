@@ -7,7 +7,8 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/")// ===> http://localhost:8080/
-@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+//@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CustomersController {
 
     private CustomerRepository repository;

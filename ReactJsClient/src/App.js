@@ -13,7 +13,7 @@ import {
     //CustShow
 } from './CustomerView/Customers';
 
-import Dataloader from './Etl/Dataloader';
+// import Dataloader from './Etl/Dataloader';
 
 import DataProviderManager from './Etl/DataProviderManager';
 
@@ -22,8 +22,8 @@ DataProviderManager.loadDataProvider({
         {
             "id":1,
             "email":"jhamilton0@usda.gov",
-            "first_name":"Joshua",
-            "last_name":"Hamilton",
+            "first_name":"Hard Coded",
+            "last_name":"Data",
             "ip":"135.75.95.238",
             "latitude":-27.634171,
             "longitude":-52.273891,
@@ -50,11 +50,11 @@ const App = () => (
             //show={CustShow}
             create={CustCreate}
         />
-        <Resource
+        {/* <Resource
             name='Loader'
             options={{ label: 'Data Loader(Etl)' }}
             list={Dataloader}
-        />
+        /> */}
     </Admin>
 );
 export default App;

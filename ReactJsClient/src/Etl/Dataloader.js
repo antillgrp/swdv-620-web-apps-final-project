@@ -13,6 +13,15 @@ export default class Dataloader extends Component {
       jsonDataFile: null,
       csvDataFile: null,
       csvMapFile: null,
+      restApiIdx: 0,
+      restApiArr: [        
+        "(SPRINGB) [" + window.location.protocol
+        + "://" + window.location.hostname 
+        + ":" + 4001 + "]",
+        "(EXPRESS) [" + window.location.protocol
+        + "://" + window.location.hostname
+        + ":" + 4002 + "]"
+      ],
     };
     //ReduxEngine.reduxStore.subscribe(() => { ???
     //    this.setState({remounting:true});
@@ -46,11 +55,14 @@ export default class Dataloader extends Component {
                     this.setState({ dataSource: e.target.value })
                   }
                 >
-                  {["", "json file", "csv map/data files", "database"].map(
-                    (dataSource, index) => (
-                      <option value={index}>{dataSource}</option>
-                    )
-                  )}
+                  {[
+                    "",
+                    "json file",
+                    "csv map/data files",
+                    "REST-API (database)",
+                  ].map((dataSource, index) => (
+                    <option value={index}>{dataSource}</option>
+                  ))}
                 </select>
               </label>
               <br />
@@ -121,20 +133,27 @@ export default class Dataloader extends Component {
                   </ReactFileReader>
                 </>
               ) : +this.state.dataSource === 3 ? (
-                <>
-                  <strong>
-                    Load data from API (URL):
-                    <br />
-                    <br />
-                    <a
-                      href={"http://localhost:4001/customers"}
-                      style={{ color: "orange" }}
-                    >
-                      http://localhost:4001/customers
-                    </a>
-                    <br />
-                  </strong>
-                </>
+                <label>
+                  <strong>Select the Rest API for fetching the data:</strong>
+                  <br />
+                  <select
+                    value={this.state.restApiIdx}
+                    onChange={(e) =>
+                      this.setState({
+                        restApiIdx: e.target.value
+                      })
+                    }
+                  >
+                    {
+                      this.state.restApiArr.map(
+                        (elem, index) => (
+                          <option value={index}>{elem}</option>
+                        )
+                      )
+                    }
+                  </select>
+                  <br />
+                </label>
               ) : null}
               <br />
               <input type="submit" value="Load..." onClick={this.onLoadClick} />
@@ -166,8 +185,8 @@ export default class Dataloader extends Component {
         else this.loadCSVFiles();
         break;
       }
-      case 3: {
-        //FETCH FROM DB/AP
+      case 3: {        
+        //FETCH FROM API / DB
         this.fetchFromAPI();
         break;
       }
@@ -239,11 +258,16 @@ export default class Dataloader extends Component {
   };
 
   fetchFromAPI = () => {
-    fetch("http://localhost:4001/customers")
+    let REST_API_URL =
+      this.state.restApiArr[this.state.restApiIdx].split("[")[1].split("]")[0]
+      +
+      "/customers";
+    alert(REST_API_URL);
+    fetch(REST_API_URL)
       .then((response) => {
         if (response.ok) return response.json();
         else {
-          alert("ERROR Fetching from:http://localhost:4001/customers");
+          alert("ERROR Fetching from: " + REST_API_URL);
           return [];
         }
       })
