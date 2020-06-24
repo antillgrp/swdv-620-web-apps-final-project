@@ -2,7 +2,7 @@
   "name": "tutorial",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {    
+  "dependencies": {
     "@material-ui/core": "~4.10.2",
     "@material-ui/icons": "^4.9.1",
     "csvtojson": "^2.0.10",
@@ -11,6 +11,7 @@
     "ra-data-json-server": "^3.6.1",
     "react": "~16.13.1",
     "react-admin": "^3.6.1",
+    "react-app-rewired": "^2.1.6",
     "react-dom": "~16.13.1",
     "react-file-reader": "^1.1.4",
     "react-markdown": "^4.3.1",
@@ -21,8 +22,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "startrw": "react-app-rewired start",
     "start4000": "set PORT=4000 && react-scripts start",
     "build": "react-scripts build",
+    "buildrw": "react-app-rewired build",
+    "test": "react-scripts test",
+    "testrw": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "browserslist": [
