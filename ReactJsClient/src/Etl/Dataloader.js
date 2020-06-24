@@ -5,8 +5,13 @@ import ReactFileReader from "react-file-reader";
 import CustomersRdxManager from "./CustomersRdxManager";
 
 export default class Dataloader extends Component {
+  
   constructor(props) {
+    
     super(props);
+
+    //this.reloaded = this.props.
+
     this.state = {
       //remounting:true,
       dataSource: 0, // 0: empty, 1:json, 2:csv, 3: database/api
@@ -16,10 +21,10 @@ export default class Dataloader extends Component {
       restApiIdx: 0,
       restApiArr: [        
         "(SPRINGB) [" + window.location.protocol
-        + "://" + window.location.hostname 
+        + "//" + window.location.hostname 
         + ":" + 4001 + "]",
         "(EXPRESS) [" + window.location.protocol
-        + "://" + window.location.hostname
+        + "//" + window.location.hostname
         + ":" + 4002 + "]"
       ],
     };
@@ -175,19 +180,19 @@ export default class Dataloader extends Component {
         //JSON FILE
         if (!this.state.jsonDataFile)
           alert("Json data file not properly selected, pls try again.");
-        else this.loadJsonFile();
+        else this.loadJsonFile();        
         break;
       }
       case 2: {
         //CSV FILES
         if (!this.state.csvDataFile || !this.state.csvMapFile)
           alert("CSV Data or Map not properly selected, pls try again.");
-        else this.loadCSVFiles();
+        else this.loadCSVFiles();        
         break;
       }
       case 3: {        
         //FETCH FROM API / DB
-        this.fetchFromAPI();
+        this.fetchFromAPI();        
         break;
       }
       default:
@@ -196,6 +201,9 @@ export default class Dataloader extends Component {
   };
 
   refillCustRdxStore = (dataSetArr) => {
+
+    console.log(dataSetArr);
+
     CustomersRdxManager.AddCustomerSet(dataSetArr);
 
     //TODO: redirect/navegate to /customers
@@ -257,23 +265,22 @@ export default class Dataloader extends Component {
     reader.readAsBinaryString(this.state.csvMapFile);
   };
 
-  fetchFromAPI = () => {
+  fetchFromAPI = () => {    
+    
     let REST_API_URL =
-      this.state.restApiArr[this.state.restApiIdx].split("[")[1].split("]")[0]
-      +
-      "/customers";
-    alert(REST_API_URL);
-    fetch(REST_API_URL)
-      .then((response) => {
-        if (response.ok) return response.json();
-        else {
-          alert("ERROR Fetching from: " + REST_API_URL);
-          return [];
-        }
+      this.state.restApiArr[this.state.restApiIdx]
+        .split("[")[1]
+        .split("]")[0]
+        .concat("/customers");
+    
+    fetch(REST_API_URL)      
+      .then((res) => {
+        //console.log(res);
+        if (res.ok) return res.json();
+        alert("ERROR Fetching from: " + REST_API_URL);
+        return [];
       })
       .then((json) => this.refillCustRdxStore(json))
-      .catch((error) => {
-        console.error(error);
-      });
+      .catch((err) => console.error(err));      
   };
 }

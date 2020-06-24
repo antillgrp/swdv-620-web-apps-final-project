@@ -62,7 +62,8 @@ module.exports = (app) => {
         /*****GETALL****/ // curl -i -H "Accept: application/json" -H "Content-Type:application/json" -X GET "http://localhost:4000/customers"
 
         //res.send("GET request for /customers successful!\n");
-        customers.findAll(req, res);
+        //customers.findAll(req, res);
+        customers.findAllEven(req, res);
       }
     )
     .post((req, res) => {

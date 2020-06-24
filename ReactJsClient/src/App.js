@@ -7,11 +7,11 @@ import UserIcon from '@material-ui/icons/Group';
 import Dashboard from './Dashboard/Dashboard';
 
 import {
-    CustList,
-    CustEdit,
-    CustCreate,
-    //CustShow
-} from './CustomerView/Customers';
+  CustPage,
+  CustEdit,
+  CustCreate,
+  //CustShow
+} from "./CustomerView/Customers";
 
 // import Dataloader from './Etl/Dataloader';
 
@@ -35,26 +35,25 @@ DataProviderManager.loadDataProvider({
 });
 
 const App = () => (
-    <Admin
-        title="People10 code challenge"
-        
-        dataProvider={DataProviderManager.dataProvider}
-        dashboard={Dashboard}
-    >
-        <Resource
-            icon={UserIcon}
-            name="customers"
-            options={{ label: 'Customers List' }}
-            list={CustList}
-            edit={CustEdit}
-            //show={CustShow}
-            create={CustCreate}
-        />
-        {/* <Resource
+  <Admin
+    title="People10 code challenge"
+    dataProvider={DataProviderManager.dataProvider}
+    dashboard={Dashboard}
+  >
+    <Resource
+      icon={UserIcon}
+      name="customers"
+      options={{ label: "Customers List" }}
+      list={CustPage}
+      edit={CustEdit}
+      //show={CustShow}
+      create={CustCreate}
+    />
+    {/* <Resource
             name='Loader'
             options={{ label: 'Data Loader(Etl)' }}
             list={Dataloader}
         /> */}
-    </Admin>
+  </Admin>
 );
 export default App;

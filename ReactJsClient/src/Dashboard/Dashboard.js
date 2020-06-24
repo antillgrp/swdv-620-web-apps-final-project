@@ -5,6 +5,8 @@ import CardHeader from "@material-ui/core/CardHeader";
 
 import ReactMarkdown from "react-markdown";
 
+import README from "@readme";
+
 export default () => (
   <Card>
     <CardHeader title="Welcome to the administration" />

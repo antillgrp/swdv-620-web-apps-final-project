@@ -27,52 +27,97 @@ import {
 
 import Dataloader from "../Etl/Dataloader";
 
-export const CustList = (props) => (
-    <Grid container direction="column" spacing={2}>
+import CustomersRdxManager from "../Etl/CustomersRdxManager"; 
+
+export class CustPage extends React.Component {
+
+    constructor(props) {
+      super(props);
+
+      this.state = { showlist: true };
+
+      CustomersRdxManager
+            .reduxStore
+            .subscribe(
+              () => { 
+                console.log("reduxStore updated!!");
+                this.setState({showlist: false});
+                this.setState({showlist: true});
+              }
+            );
+    }
+
+    render() {
+      
+    const { props } = this;
+
+    return (
+      <Grid container direction="column" spacing={2}>
         <Grid item>
-            <Card>                
-                <CardContent>
-                    <Dataloader/>
-                </CardContent>
-            </Card>
-        </Grid>    
+          <Card>
+            <CardContent>
+              <Dataloader />
+            </CardContent>
+          </Card>
+        </Grid>
         <Grid item>
-            <List
+          {
+            this.state.showlist 
+            &&
+            <CustList {...props} />
+          }
+        </Grid>
+      </Grid>
+    );
+  }
+}
+
+export class CustList extends React.Component {
+    
+    // constructor(props) {
+    //     super(props);        
+    // }
+
+    render() {
+        const {
+            props,
+        } = this;
+
+        return (
+          <List
             {...props}
             filters={<CustFilter />}
             sort={{ field: "id", order: "ASC" }}
-            >
+          >
             <Datagrid>
-                <TextField source="id" />
-                <FunctionField
-                    label="Full Name"
-                    sortBy="last_name"
-                    render={(record) =>
-                        `${record.first_name} ${record.last_name}`
+              <TextField source="id" />
+              <FunctionField
+                label="Full Name"
+                sortBy="last_name"
+                render={(record) => `${record.first_name} ${record.last_name}`}
+              />
+              <EmailField source="email" />
+              <TextField source="ip" />
+              <Location label="Location (link)" />
+              <DateField locales="en-US" label="Since" source="created_at" />
+              <FunctionField
+                label="Last Edit"
+                sortBy="updated_at"
+                render={(record) =>
+                  record.updated_at &&
+                  new Date(
+                    `${record.updated_at.split(" ")[0]}T${
+                      record.updated_at.split(" ")[1]
+                    }.167Z`
+                  ).toLocaleString()
                 }
-                />
-                <EmailField source="email" />
-                <TextField source="ip" />
-                <Location label="Location (link)" />
-                <DateField locales="en-US" label="Since" source="created_at" />
-                <FunctionField
-                    label="Last Edit"
-                    sortBy="updated_at"
-                    render={(record) =>
-                        record.updated_at &&
-                        new Date(
-                            `${record.updated_at.split(" ")[0]}T${
-                                record.updated_at.split(" ")[1]
-                            }.167Z`
-                        ).toLocaleString()
-                    }
-                />
-                <EditButton />
+              />
+              <EditButton />
             </Datagrid>
-            </List>
-        </Grid>
-    </Grid>
-);
+          </List>
+        );
+    }
+}
 
 const CustFilter = props => (
     <Filter {...props}>

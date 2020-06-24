@@ -40,9 +40,20 @@ const customerTable = customerModel(sequelizeConn, Sequelize.DataTypes);
 module.exports = {
   /*****GETALL****/
   findAll: (req, res) => {
-    customerTable.findAll().then((custCollection) => {
-      res.send(custCollection);
-    });
+    customerTable
+      .findAll()      
+      .then((custCollection) => {
+        res.send(custCollection);
+      });
+  },
+  findAllEven: (req, res) => {
+    customerTable      
+      .findAll({
+        where: Sequelize.literal("(id % 2) = 0"),
+      })
+      .then((custCollection) => {
+        res.send(custCollection);
+      });
   },
   /******CREATE********/
   create: (req, res) => {

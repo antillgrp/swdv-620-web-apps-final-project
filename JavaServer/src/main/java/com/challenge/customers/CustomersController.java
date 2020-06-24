@@ -22,7 +22,8 @@ public class CustomersController {
     @GetMapping(path = "customers", produces = "application/JSON")
     public ResponseEntity<List<Customer>> getAll() {
         
-        return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+        // return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(repository.findByOddIds(), HttpStatus.OK);
         
     }
 

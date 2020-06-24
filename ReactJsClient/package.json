@@ -2,7 +2,7 @@
   "name": "tutorial",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "dependencies": {    
     "@material-ui/core": "~4.10.2",
     "@material-ui/icons": "^4.9.1",
     "csvtojson": "^2.0.10",
