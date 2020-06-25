@@ -22,12 +22,21 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "startrw": "react-app-rewired start",
-    "start4000": "set PORT=4000 && react-scripts start",
+
+    "__PORT4000__": "https://stackoverflow.com/a/41770848",
+
+    "startrwlnx": "PORT=4000 react-app-rewired start", 
+    
+    "startrwwin": "set PORT=4000 && react-app-rewired start",  
+    
     "build": "react-scripts build",
+    
     "buildrw": "react-app-rewired build",
+    
     "test": "react-scripts test",
+    
     "testrw": "react-app-rewired test",
+    
     "eject": "react-scripts eject"
   },
   "browserslist": [

@@ -1,10 +1,68 @@
-# swdv-620-web-apps-final-project
+# SWDV 620 2W 20/SU1 Final Project
 
-NodeJS Rest API Recoding from a Java Spring Boot Code Challenge
+This web app is a **Full Stack** (Front-End (client) <=> Back-End (servers)). The idea was taken from a code-challenge I had to code once for a hiring company. To that original result, some other features and improvements have been added to better meet with the content of this course. The last section detailed explains the requirement of the WebApp.
 
-# code-challenge
+Next points describe how was it done and what technologies were used:
 
-## Introduction
+- # Front-End
+
+| Core |||| Auxiliar libraries and dependencies: |
+| :--------------------- |-|-|-| :--- |
+| JavaScript |||| material-ui |
+| **ReactJS** |||| csvtojson |
+| **ReduxJS** |||| fakerest |
+||||| **react-admin** |
+||||| react-app-rewired |
+||||| react-file-reader |
+||||| react-markdown |
+
+### Instructions(webapp)
+
+\> cd swdv-620-web-apps-final-project/ReactJsClient
+
+\> **yarn**
+
+("PORT=4000 react-app-rewired start")
+
+\> yarn **startrwlnx**  
+
+- # Back-End
+
+Back-End consist in two separate Restful (**REST APIs**)  microservices servers, Both are pointing to the same MySQL database server and database.
+
+### 1st server NodeJS: 
+
+- #### express (web server)
+- #### sequelize (ORM)
+- #### mysql2 (mysql driver for nodejs)
+
+### 1st server Instructions:
+
+\> cd swdv-620-web-apps-final-project/NodeServer
+
+\> **npm start**
+
+### 2nd server Java: 
+
+- #### Spring-Boot (web server)
+- #### Hibernate (ORM)
+- #### JPA, MySQL 
+
+### 2nd server Instructions:
+
+\> cd swdv-620-web-apps-final-project/JavaServer
+
+\> **mvn spring-boot:run**
+
+### Database Server Setup: 
+
+\> docker pull **mysql**
+
+\> docker run --name mysql -p **3406**:3306 -e MYSQL_ROOT_PASSWORD=**mypassword** -d **mysql**
+
+\> mysql -h **localhost** -P **3406** -u **root** -p **mypassword** < **customers.sql**
+
+## code-challenge Description
 
 This project is designed as a quick exercise to gauge a candidate's
 understanding of general programming knowledge and/or user experience design.

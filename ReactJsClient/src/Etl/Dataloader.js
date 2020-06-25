@@ -45,11 +45,12 @@ export default class Dataloader extends Component {
               padding: "0 2vmin 0 2vmin",
               ...fontStyle(14, 5),
             }}
+            key={"legend"}
           >
             Data loader
           </legend>
           <>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={(e) => e.preventDefault()} key={"form"}>
               <label>
                 <br />
                 <strong>Select the source of the data:</strong>
@@ -139,7 +140,11 @@ export default class Dataloader extends Component {
                 </>
               ) : +this.state.dataSource === 3 ? (
                 <label>
-                  <strong>Select the Rest API for fetching the data:</strong>
+                      <strong>
+                        Select the {" "} 
+                        <span style={{ color: "orange" }}>Rest API URL</span>
+                        {" "} for fetching the data:
+                      </strong>
                   <br />
                   <select
                     value={this.state.restApiIdx}
