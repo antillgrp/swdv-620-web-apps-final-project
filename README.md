@@ -26,6 +26,8 @@ Next points describe how was it done and what technologies were used:
 
 \> yarn **startrwlnx**  
 
+**ETL** is a type of data integration that refers to the three steps **(extract, transform, load)** used to blend data from multiple sources. It's often used to build a data warehouse. During this process, data is taken **(extracted)** from a source system, converted **(transformed)** into a format that can be analyzed, and stored **(loaded)** into a data warehouse or other system. Extract, load, transform **(ELT)** is an alternate but related approach designed to push processing down to the database for improved performance.
+
 - # Back-End
 
 Back-End consist in two separate Restful (**REST APIs**)  microservices servers, Both are pointing to the same MySQL database server and database.
@@ -64,21 +66,13 @@ Back-End consist in two separate Restful (**REST APIs**)  microservices servers,
 
 ## code-challenge Description
 
-This project is designed as a quick exercise to gauge a candidate's
-understanding of general programming knowledge and/or user experience design.
+This project is designed as a quick exercise to gauge a candidate's understanding of general programming knowledge and/or user experience design.
 
 ## Terms & Conditions
 
-*Note: Use of third-party plugins other than those defined within project
-is allowed. But please take into account to demonstrate your strengths and
-not leave your experience and capabilities to question. No commercial or
-proprietary plug-ins are allowed.*
+*Note: Use of third-party plugins other than those defined within project is allowed. But please take into account to demonstrate your strengths and not leave your experience and capabilities to question. No commercial or proprietary plug-ins are allowed.*
 
-Build this project out in the most appropriate way possible.  Treat it as a
-"real-world component" that will be added into our system.  Feel free to
-restructure/enhance the project as you see fit. However, you must follow the
-restrictions described above. Lastly, solutions should be easily built on
-a standard linux, osx machine or browser.
+Build this project out in the most appropriate way possible.  Treat it as a "real-world component" that will be added into our system.  Feel free to restructure/enhance the project as you see fit. However, you must follow the restrictions described above. Lastly, solutions should be easily built on a standard linux, osx machine or browser.
 
 ## The Challenges
 
@@ -96,9 +90,7 @@ etl/data2.csv
 
 ### Web Service Engineering Challenge
 
-Create a "RESTful" web services to create, read, update, delete and search
-customers table. *Note: using mysql is optional. The schema is provided for
-reference purposes only.*
+Create a "RESTful" web services to create, read, update, delete and search customers table. *Note: using mysql is optional. The schema is provided for reference purposes only.*
 
 ```
 ws/customers.sql
